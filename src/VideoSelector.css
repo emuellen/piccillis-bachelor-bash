@@ -113,7 +113,7 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 54vh; /* Cover half the screen vertically */
+  height: 53vh; /* Cover half the screen vertically */
   width: 30vh;
   position: absolute;
   top: 50%;
