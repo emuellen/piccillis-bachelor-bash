@@ -58,10 +58,10 @@ body {
 }
 
 form {
-  background: rgba(255, 255, 255, 0.5); /* Add transparency to the form */
+  background: rgba(255, 255, 255, 0.3); /* Add transparency to the form */
   padding: 20px;
   border-radius: 8px;
-  backdrop-filter: blur(5px); /* Add blur effect to the form background */
+  backdrop-filter: blur(1px); /* Add blur effect to the form background */
   max-width: 400px;
   width: 100%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
