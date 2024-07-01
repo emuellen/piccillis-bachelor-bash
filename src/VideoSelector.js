@@ -95,7 +95,7 @@ const VideoSelector = () => {
       <form onSubmit={handleSubmit}>
         <div>
           <label>
-            What teams played in the Europa League on the 4th of April 2018?
+            What teams played in the Europa League on the 5th of April 2018?
             <select value={option1} onChange={(e) => setOption1(e.target.value)}>
               <option value="">Select...</option>
               <option value="option1A">1. FC Köln - Bayern München</option>
