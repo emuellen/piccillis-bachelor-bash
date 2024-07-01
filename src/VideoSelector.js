@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './VideoSelector.css'; // Create a CSS file for styling
 
@@ -8,6 +8,23 @@ const VideoSelector = () => {
   const [option3, setOption3] = useState('');
   const [videoUrl, setVideoUrl] = useState('');
   const [youtubeUrl, setYoutubeUrl] = useState('');
+  const [currentBackground, setCurrentBackground] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBackground((prev) => (prev + 1) % backgroundImages.length);
+    }, 5000); // Change image every 5 seconds
+    return () => clearInterval(interval);
+  });
+
+
+  const backgroundImages = [
+    './images/leandro_1.jpeg',
+    './images/leandro_2.jpeg',
+    './images/leandro_3.jpeg',
+    './images/leandro_4.jpeg',
+    './images/leandro_5.jpeg'
+  ];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,12 +43,21 @@ const VideoSelector = () => {
   if (videoUrl) {
     return (
       <div className="video-container">
+        <div className="background-slideshow">
+        {backgroundImages.map((image, index) => (
+          <div
+            key={index}
+            className={`background-slide ${index === currentBackground ? 'active' : ''}`}
+            style={{ backgroundImage: `url(${image})` }}
+          ></div>
+        ))}
+      </div>
         <iframe
           src={videoUrl}
           frameBorder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-          autoplay
+          autoPlay
           title="Video"
         ></iframe>
       </div>
@@ -41,6 +67,15 @@ const VideoSelector = () => {
   if (youtubeUrl) {
     return (
       <div className="video-container">
+        <div className="background-slideshow">
+        {backgroundImages.map((image, index) => (
+          <div
+            key={index}
+            className={`background-slide ${index === currentBackground ? 'active' : ''}`}
+            style={{ backgroundImage: `url(${image})` }}
+          ></div>
+        ))}
+      </div>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=eHQqRxzl9RyaaDfm?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
     );
@@ -48,10 +83,19 @@ const VideoSelector = () => {
 
   return (
     <div className="selector-container">
+      <div className="background-slideshow">
+        {backgroundImages.map((image, index) => (
+          <div
+            key={index}
+            className={`background-slide ${index === currentBackground ? 'active' : ''}`}
+            style={{ backgroundImage: `url(${image})` }}
+          ></div>
+        ))}
+      </div>
       <form onSubmit={handleSubmit}>
         <div>
           <label>
-            What teams played on the Europa League on the 4th of April 2018?:
+            What teams played in the Europa League on the 4th of April 2018?
             <select value={option1} onChange={(e) => setOption1(e.target.value)}>
               <option value="">Select...</option>
               <option value="option1A">1. FC Köln - Bayern München</option>
@@ -62,7 +106,7 @@ const VideoSelector = () => {
         </div>
         <div>
           <label>
-            What costume did Imke wear Halloween 2019?:
+            What costume did Imke wear Halloween 2019?
             <select value={option2} onChange={(e) => setOption2(e.target.value)}>
               <option value="">Select...</option>
               <option value="option2A">Giraffe</option>
@@ -73,7 +117,7 @@ const VideoSelector = () => {
         </div>
         <div>
           <label>
-            Which words were displayed on the wall in La Cocina Negra?:
+            Which words were displayed on the wall in La Cocina Negra?
             <select value={option3} onChange={(e) => setOption3(e.target.value)}>
               <option value="">Select...</option>
               <option value="option3A">Você é uma gatinha</option>
