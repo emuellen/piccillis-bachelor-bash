@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import './VideoSelector.css'; // Create a CSS file for styling
+import './App.css'; // Create a CSS file for styling
 
-const VideoSelector = () => {
+function App() {
   const [option1, setOption1] = useState('');
   const [option2, setOption2] = useState('');
   const [option3, setOption3] = useState('');
@@ -110,6 +110,6 @@ const VideoSelector = () => {
     </div>
     </>
     ); 
-};
+}
 
-export default VideoSelector;
+export default App
